@@ -15,19 +15,13 @@ services:
   wordpress:
     depends_on:
       - db
-    image: wordpress:4.1.2-fpm
+    image: bitnami/wordpress:4.3.1-0
     volumes:
       - ./uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
     ports:
       - "8000:8000"
       - "80:80"
-      - "443:443"
-      - "2222:22"
-      - "3306:3306"
-      - "1337:1337"
-      - "1338:1338"
       - "8080:8080"
-      - "9000:9000"
     restart: always
     environment:
       WORDPRESS_DB_HOST: db:3306
