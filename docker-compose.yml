@@ -15,7 +15,7 @@ services:
   wordpress:
     depends_on:
       - db
-    image: bitnami/wordpress:4.3.1-1
+    image: bitnami/wordpress:latest
     volumes:
       - ./uploads.ini:/usr/local/etc/php/uploads.ini
     ports:
