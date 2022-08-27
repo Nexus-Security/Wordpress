@@ -3,21 +3,28 @@ version: '3'
 services:
   db:
     image: mysql:5.7
+    volumes:
+      - db_data:/var/lib/mysql
+    restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: toor
+      MYSQL_ROOT_PASSWORD: somewordpress
       MYSQL_DATABASE: wordpress
       MYSQL_USER: wordpress
       MYSQL_PASSWORD: wordpress
-  web:
-    image: wordpress:4.2.3-apache
-    volumes:
-      - ./wp-config.php:/var/www/wp-config.php
+
+  wordpress:
     depends_on:
       - db
+    image: wordpress:latest
+    volumes:
+      - ./uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
     ports:
       - "8000:80"
+    restart: always
     environment:
       WORDPRESS_DB_HOST: db:3306
       WORDPRESS_DB_USER: wordpress
       WORDPRESS_DB_PASSWORD: wordpress
-      MYSQL_PORT_3306_TCP: 3306
+
+volumes:
+  db_data:
