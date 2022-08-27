@@ -9,7 +9,7 @@ services:
       MYSQL_USER: wordpress
       MYSQL_PASSWORD: wordpress
   web:
-    image: wordpress:4.4.0-fpm
+    image: wordpress:4.6-php7.0
     volumes:
       - ./wp-config.php:/var/www/html/wp-config.php
     depends_on:
