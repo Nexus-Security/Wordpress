@@ -19,7 +19,15 @@ services:
     volumes:
       - ./uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
     ports:
-      - "8000:80"
+      - "8000:8000"
+      - "80:80"
+      - "443:443"
+      - "2222:22"
+      - "3306:3306"
+      - "1337:1337"
+      - "1338:1338"
+      - "8080:8080"
+      - "9000:9000"
     restart: always
     environment:
       WORDPRESS_DB_HOST: db:3306
